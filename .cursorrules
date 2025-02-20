@@ -421,20 +421,12 @@
       },
       "automatedTasks": {
         "preCommit": [
-          "Lint code",
-          "Run tests",
           "Check commit message format"
-        ],
-        "prePush": [
-          "Run full test suite",
-          "Check code coverage",
-          "Build verification"
         ],
         "releaseProcess": [
           "Update version",
           "Generate changelog",
-          "Create release tag",
-          "Build artifacts"
+          "Create release tag"
         ]
       },
       "conflictResolution": {
@@ -677,6 +669,112 @@
         "onFailure": "revert",
         "notifyUser": true,
         "createErrorLog": true
+      },
+      "documentationSync": {
+        "enabled": true,
+        "files": {
+          "README.md": {
+            "autoUpdate": true,
+            "sections": {
+              "version": {
+                "pattern": "## Version",
+                "autoIncrement": true
+              },
+              "features": {
+                "pattern": "## Features",
+                "trackChanges": true
+              },
+              "projectStructure": {
+                "pattern": "## Project Structure",
+                "autoSync": true
+              }
+            },
+            "commitMessage": "docs(readme): sync with latest changes",
+            "requireValidation": true
+          },
+          "docs/experts/README.md": {
+            "autoUpdate": true,
+            "sections": {
+              "experts": {
+                "pattern": "## Available Experts",
+                "trackChanges": true,
+                "syncWith": ".cursorrules.rules[*]"
+              },
+              "responsibilities": {
+                "pattern": "**Responsibilities**",
+                "trackChanges": true
+              }
+            },
+            "commitMessage": "docs(experts): sync expert documentation",
+            "requireValidation": true
+          },
+          "docs/workflows/git-workflow.md": {
+            "autoUpdate": true,
+            "sections": {
+              "branchStrategy": {
+                "pattern": "## Branch Strategy",
+                "syncWith": ".cursorrules.branchTemplates"
+              },
+              "commitConventions": {
+                "pattern": "## Commit Conventions",
+                "syncWith": ".cursorrules.commitConventions"
+              }
+            },
+            "commitMessage": "docs(workflow): sync git workflow documentation",
+            "requireValidation": true
+          },
+          "docs/security/guidelines.md": {
+            "autoUpdate": true,
+            "sections": {
+              "automatedMeasures": {
+                "pattern": "## Automated Security Measures",
+                "syncWith": ".cursorrules.securitySettings"
+              },
+              "practices": {
+                "pattern": "## Security Practices",
+                "trackChanges": true
+              }
+            },
+            "commitMessage": "docs(security): sync security guidelines",
+            "requireValidation": true
+          }
+        },
+        "validation": {
+          "checkLinks": true,
+          "validateStructure": true,
+          "ensureConsistency": true,
+          "validateReferences": true
+        }
+      }
+    }
+  },
+  "workflowAutomation": {
+    "dailyTasks": {
+      "morningChecklist": {
+        "enabled": true,
+        "tasks": [
+          "Check documentation updates",
+          "Review security logs",
+          "Sync documentation"
+        ]
+      },
+      "expertInteractions": {
+        "quickCommands": {
+          "doc": "Trigger Documentation Manager",
+          "sec": "Trigger Security Expert",
+          "git": "Trigger Git Expert"
+        },
+        "contextAwareness": {
+          "enabled": true,
+          "rememberLastContext": true,
+          "suggestRelevantExperts": true
+        }
+      },
+      "documentationHelpers": {
+        "autoFormat": true,
+        "suggestImprovements": true,
+        "validateLinks": true,
+        "generateTOC": true
       }
     }
   }
