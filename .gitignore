@@ -24,3 +24,18 @@ Thumbs.db
 
 # Cursor specific
 .cursor-backups/
+
+# Security-sensitive files
+.env*
+.key
+*.pem
+*.key
+*.cert
+credentials.json
+*secret*
+.cursor-backups/
+.git-backups/
+
+# Security logs
+security-*.log
+error-*.log

@@ -194,26 +194,6 @@ Our system is powered by specialized AI experts:
 Each expert has specific responsibilities and can be triggered by relevant commands.
 [Learn more about experts](docs/experts/README.md)
 
-# AI Experts Documentation
-
-Detailed documentation for each AI expert in the system.
-
-## Available Experts
-
-- Secretary
-- Git Expert
-- Documentation Manager
-- Product Expert
-- Security Expert
-- Community Expert
-- Business Expert
-
-# Git Workflow Guidelines
-
-Detailed documentation of our Git workflow and branching strategy.
-
-[Content from README.md's Branch Strategy section, expanded]
-
 ## Development
 
 ### Prerequisites
