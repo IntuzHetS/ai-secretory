@@ -534,6 +534,78 @@
           "createTag": "git tag -a {tag-name} -m \"{message}\"",
           "pushTag": "git push origin {tag-name}"
         }
+      },
+      "settings": {
+        "autoApply": true,
+        "confirmationRequired": false,
+        "backupBranches": true,
+        "backupLocation": ".git-backups/",
+        "allowedRepositories": [
+          "https://github.com/IntuzHetS/ai-secretory.git"
+        ],
+        "autoExecute": {
+          "enabled": true,
+          "validateBefore": true,
+          "onlyForAllowedRepos": true,
+          "errorHandling": {
+            "onFailure": "revert",
+            "notifyUser": true
+          }
+        },
+        "branchOperations": {
+          "allowDirectCreation": true,
+          "allowDirectDeletion": true,
+          "allowDirectPush": true,
+          "validateBranchRules": true,
+          "autoBackupBeforeDelete": true,
+          "autoStashChanges": true,
+          "requireRepoValidation": true
+        },
+        "commitOperations": {
+          "allowDirectCommit": true,
+          "validateCommitMessage": true,
+          "autoFixCommitMessage": true,
+          "requireCleanWorkingTree": true,
+          "requireRepoValidation": true
+        },
+        "remoteOperations": {
+          "allowDirectPush": true,
+          "requireFastForward": false,
+          "autoFetch": true,
+          "autoPrune": true,
+          "requireRepoValidation": true
+        },
+        "tagOperations": {
+          "allowDirectTagging": true,
+          "requireSignedTags": false,
+          "autoPushTags": true,
+          "requireRepoValidation": true
+        },
+        "autoSave": {
+          "enabled": true,
+          "interval": "onEdit",
+          "createCommit": true,
+          "commitMessage": "security: automated changes at {timestamp}",
+          "backupBeforeSave": true,
+          "saveOnCreate": true,
+          "createBackupDir": true,
+          "validatePaths": true,
+          "errorHandling": {
+            "onFailure": "revert",
+            "notifyUser": true
+          }
+        },
+        "securityCommits": {
+          "enabled": true,
+          "autoCommitUnauthorizedChanges": true,
+          "commitMessageTemplate": "security({scope}): automated {action} at {timestamp}",
+          "includeDetails": true,
+          "detailsFormat": "\n\n- Action: {action}\n- Files: {files}\n- Timestamp: {timestamp}\n- Validation: {validationStatus}",
+          "requireValidation": true,
+          "autoPush": true,
+          "createBackup": true,
+          "notifyOnCommit": true
+        }
       }
     }
   ],
@@ -571,5 +643,41 @@
       "README.md"
     ],
     "projectOverview": "Refer to the [README.md](README.md) for more information"
+  },
+  "securitySettings": {
+    "unauthorizedChanges": {
+      "enabled": true,
+      "allowedRepositories": [
+        "https://github.com/IntuzHetS/ai-secretory.git"
+      ],
+      "autoCommit": {
+        "enabled": true,
+        "interval": "onEdit",
+        "createCommit": true,
+        "commitMessageTemplate": "security({expert}): automated {action} at {timestamp}",
+        "detailsFormat": "\n\n- Expert: {expert}\n- Action: {action}\n- Files: {files}\n- Timestamp: {timestamp}\n- Validation: {validationStatus}",
+        "backupBeforeCommit": true,
+        "requireValidation": true,
+        "autoPush": true,
+        "notifyOnCommit": true
+      },
+      "validation": {
+        "requireUserPermission": true,
+        "autoRevertUnauthorized": true,
+        "excludeUserActions": true,
+        "trackExpertActions": true
+      },
+      "backup": {
+        "enabled": true,
+        "location": ".cursor-backups/",
+        "createOnEdit": true,
+        "retentionPeriod": "7d"
+      },
+      "errorHandling": {
+        "onFailure": "revert",
+        "notifyUser": true,
+        "createErrorLog": true
+      }
+    }
   }
 }
